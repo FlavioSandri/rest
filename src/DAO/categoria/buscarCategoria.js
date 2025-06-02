@@ -1,8 +1,6 @@
 const {conexao} = require('../conexao.js')
-
-
-async function buscarPedidos(){
-    const sql = `SELECT * FROM tbl_pedido;`
+async function buscarCategoria(){
+    const sql = `SELECT * FROM tbl_categoria;`
     
     
     const conn = await conexao()
@@ -16,4 +14,4 @@ async function buscarPedidos(){
       }
 }
 
-module.exports = {buscarPedidos}
+module.exports = {buscarCategoria}

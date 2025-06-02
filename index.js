@@ -2,8 +2,11 @@ const express = require('express')
 const { buscarClientes } = require('./src/DAO/cliente/buscarClientes.js')
 const { buscarProdutos } = require('./src/DAO/produtos/buscarProdutos.js')
 const { buscarPedidos } = require('./src/DAO/pedidos/buscarPedidos.js')
+const { buscarEndereco } = require('./src/DAO/endereco/buscarEndereco.js')
+const { buscarCategoria } = require('./src/DAO/categoria/buscarCategoria.js')
 const app = express()
 const {conexao, closeConexao, testarConexao} = require ("./src/DAO/conexao.js")
+
 
 
 app.get('/empresa_produtos_limpeza/v1', (req, res) => {
@@ -24,9 +27,20 @@ app.get('/empresa_produtos_limpeza/v1/produtos', async (req, res) =>{
 })
 
 app.get('/empresa_produtos_limpeza/v1/pedidos', async (req, res) =>{
-    let pedidos = await buscarPedido()
+    let pedidos = await buscarPedidos()
     res.json(pedidos)
 })
+
+app.get('/empresa_produtos_limpeza/v1/endereco', async (req, res) =>{
+    let endereco = await buscarEndereco()
+    res.json(endereco)
+})
+
+app.get('/empresa_produtos_limpeza/v1/categoria', async (req, res) =>{
+    let categoria = await buscarCategoria()
+    res.json(categoria)
+})
+
 
 
 const porta = 3000
